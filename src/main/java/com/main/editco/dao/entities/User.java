@@ -21,10 +21,13 @@ public class User {
     private String passwordHashed;
     @Column(nullable=false)
     private String name;
+    @Column(nullable=false)
+    private String role;
     @OneToMany(mappedBy = "owner")
     private Set<Document> ownedDocuments;
     @OneToMany(mappedBy="user")
     private Set<Permission> permissions;
     @OneToMany(mappedBy = "user")
     private Set<Comment> comments;
+
 }

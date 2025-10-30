@@ -2,6 +2,8 @@ package com.main.editco.service;
 
 import com.main.editco.dao.entities.User;
 import com.main.editco.dao.repositories.UserRepository;
+import com.main.editco.dto.LoginRequest;
+import com.main.editco.dto.RegisterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,22 +12,25 @@ import org.springframework.stereotype.Service;
 public class AuthService {
     @Autowired UserRepository userRepository;
     @Autowired PasswordEncoder passwordEncoder;
+    @Autowired JwtService jwtService;
 
-    public User register(String email, String name, String password) {
+    public User register(RegisterRequest registerRequest) {
+        if (userRepository.findByEmail(registerRequest.email) != null) return null;
+
         User user = new User();
-        user.setEmail(email);
-        user.setName(name);
-        user.setPasswordHashed(passwordEncoder.encode(password));
+        user.setEmail(registerRequest.email);
+        user.setName(registerRequest.name);
+        user.setPasswordHashed(passwordEncoder.encode(registerRequest.password));
+        user.setRole("USER");
         return userRepository.save(user);
     }
-
-    public User login(String email, String password) {
-        User user = userRepository.findByEmail(email);
-        if (user != null) {
-            if (passwordEncoder.matches(password, user.getPasswordHashed())) {
-                return user;
-            }
-        }
-        return null;
+    public String login(LoginRequest loginRequest) {
+        User user = userRepository.findByEmail(loginRequest.email);
+        if (user == null) return null;
+        if (!passwordEncoder.matches(loginRequest.password, user.getPasswordHashed())) return null;
+        return jwtService.generateToken(user);
+    }
+    public User getCurrentUser(String email) {
+        return userRepository.findByEmail(email);
     }
 }
