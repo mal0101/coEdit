@@ -15,6 +15,9 @@ public class DocumentService {
     public List<Document> getAllDocuments(){
         return documentRepository.findAll();
     }
+    public Optional<Document> getDocumentById(Long id) {
+        return documentRepository.findById(id);
+    }
     public List<Document> getDocumentsByOwnerId(Long ownerId){
         return documentRepository.findByOwnerId(ownerId);
     }
