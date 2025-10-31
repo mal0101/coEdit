@@ -5,7 +5,9 @@ import com.main.editco.dao.repositories.VersionHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VersionHistoryService {
@@ -15,6 +17,10 @@ public class VersionHistoryService {
         return versionHistoryRepository.findByDocumentIdOrderByTimestampDesc(documentId);
     }
     public VersionHistory addVersionHistory(VersionHistory versionHistory) {
+        versionHistory.setTimestamp(Instant.now());
         return versionHistoryRepository.save(versionHistory);
+    }
+    public Optional<VersionHistory> getVersion(Long versionId) {
+        return versionHistoryRepository.findById(versionId);
     }
 }
