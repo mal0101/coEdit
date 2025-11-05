@@ -32,7 +32,6 @@ public class WebSocketController {
         return message;
     }
 
-    // Handle user joining/leaving document
     @MessageMapping("/document/{documentId}/presence")
     @SendTo("/topic/document/{documentId}/presence")
     public UserPresenceMessage handleUserPresence(
