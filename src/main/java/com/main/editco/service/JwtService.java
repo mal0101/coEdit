@@ -28,11 +28,17 @@ public class JwtService {
     public String extractEmail(String token) {
         return getClaims(token).getSubject();
     }
-    public boolean validateToken(String token, String user) {
+    public boolean validateToken(String token, User user) {
         String email = extractEmail(token);
         return (user.getEmail().equals(email) && !isExpired(token));
     }
+
+    public boolean validateToken(String token, String email) {
+        String tokenEmail = extractEmail(token);
+        return (email.equals(tokenEmail) && isExpired(token));
+    }
     private boolean isExpired(String token) {
+
         return getClaims(token).getExpiration().before(new Date());
     }
     private Claims getClaims(String token) {
