@@ -1,15 +1,49 @@
 package com.main.editco.controller;
 
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class WebSocketController {
-    @MessageMapping
-    @SendTo("/topic/updates")
-    public String handleEdit(/*WebSocket payload*/) {
-        //TODO
-        return "Real-time update";
+    @MessageMapping("/document/{documentId}/edit")
+    @SendTo("/topic/document/{documentId}/updates")
+    public DocumentEditMessage handleDocumentEdit(@DestinationVariable Long documentId,
+                                                  DocumentEditMessage message,
+                                                  SimpleMessageHeaderAccessor headerAccessor) {
+
+        String sessionId = headerAccessor.getSessionId();
+        message.setSessionId(sessionId);
+        message.setTimestamp(System.currentTimeMillis());
+        return message;
+    }
+    @MessageMapping("/document/{documentId}/cursor")
+    @SendTo("/topic/document/{documentId}/cursors")
+    public CursorPositionMessage handleCursorPosition(
+            @DestinationVariable Long documentId,
+            CursorPositionMessage message,
+            SimpMessageHeaderAccessor headerAccessor) {
+
+        String sessionId = headerAccessor.getSessionId();
+        message.setSessionId(sessionId);
+        message.setTimestamp(System.currentTimeMillis());
+
+        return message;
+    }
+
+    // Handle user joining/leaving document
+    @MessageMapping("/document/{documentId}/presence")
+    @SendTo("/topic/document/{documentId}/presence")
+    public UserPresenceMessage handleUserPresence(
+            @DestinationVariable Long documentId,
+            UserPresenceMessage message,
+            SimpMessageHeaderAccessor headerAccessor) {
+
+        String sessionId = headerAccessor.getSessionId();
+        message.setSessionId(sessionId);
+        message.setTimestamp(System.currentTimeMillis());
+
+        return message;
     }
 }
