@@ -37,7 +37,7 @@ public class DocumentController {
         Optional<Document> updatedDocument = documentService.updateDocument(id, document);
         return updatedDocument.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDocument(@PathVariable Long id) {
         boolean deleted = documentService.deleteDocument(id);
         if (deleted)
