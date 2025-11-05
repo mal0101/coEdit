@@ -32,7 +32,7 @@ public class DocumentController {
         return ResponseEntity.ok(createdDocument);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateDocument(@PathVariable Long id, @RequestBody Document document) {
         Optional<Document> updatedDocument = documentService.updateDocument(id, document);
         return updatedDocument.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
