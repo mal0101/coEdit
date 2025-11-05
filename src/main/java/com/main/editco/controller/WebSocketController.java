@@ -3,6 +3,7 @@ package com.main.editco.controller;
 import com.main.editco.dto.CursorPositionMessage;
 import com.main.editco.dto.DocumentEditMessage;
 // import org.apache.logging.log4j.message.SimpleMessage;
+import com.main.editco.dto.SimpleMessageHeaderAccessor;
 import com.main.editco.dto.UserPresenceMessage;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
