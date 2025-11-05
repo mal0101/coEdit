@@ -3,6 +3,7 @@ package com.main.editco.controller;
 import com.main.editco.dto.CursorPositionMessage;
 import com.main.editco.dto.DocumentEditMessage;
 // import org.apache.logging.log4j.message.SimpleMessage;
+import com.main.editco.dto.UserPresenceMessage;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -40,7 +41,7 @@ public class WebSocketController {
     public UserPresenceMessage handleUserPresence(
             @DestinationVariable Long documentId,
             UserPresenceMessage message,
-            SimpMessageHeaderAccessor headerAccessor) {
+            SimpleMessageHeaderAccessor headerAccessor) {
 
         String sessionId = headerAccessor.getSessionId();
         message.setSessionId(sessionId);
