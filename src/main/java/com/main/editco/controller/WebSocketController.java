@@ -8,6 +8,7 @@ import com.main.editco.dto.UserPresenceMessage;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -16,7 +17,7 @@ public class WebSocketController {
     @SendTo("/topic/document/{documentId}/updates")
     public DocumentEditMessage handleDocumentEdit(@DestinationVariable Long documentId,
                                                   DocumentEditMessage message,
-                                                  SimpleMessageHeaderAccessor headerAccessor) {
+                                                  SimpMessageHeaderAccessor headerAccessor) {
 
         String sessionId = headerAccessor.getSessionId();
         message.setSessionId(sessionId);
@@ -28,7 +29,7 @@ public class WebSocketController {
     public CursorPositionMessage handleCursorPosition(
             @DestinationVariable Long documentId,
             CursorPositionMessage message,
-            SimpleMessageHeaderAccessor headerAccessor) {
+            SimpMessageHeaderAccessor headerAccessor) {
 
         String sessionId = headerAccessor.getSessionId();
         message.setSessionId(sessionId);
@@ -42,7 +43,7 @@ public class WebSocketController {
     public UserPresenceMessage handleUserPresence(
             @DestinationVariable Long documentId,
             UserPresenceMessage message,
-            SimpleMessageHeaderAccessor headerAccessor) {
+            SimpMessageHeaderAccessor headerAccessor) {
 
         String sessionId = headerAccessor.getSessionId();
         message.setSessionId(sessionId);
