@@ -1,5 +1,6 @@
 package com.main.editco.dao.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,16 +19,20 @@ public class User {
     private Long id;
     @Column(unique = true, nullable=false)
     private String email;
+    @JsonIgnore
     @Column(nullable=false)
     private String passwordHashed;
     @Column(nullable=false)
     private String name;
     @Column(nullable=false)
     private String role;
+    @JsonIgnore
     @OneToMany(mappedBy = "owner")
     private Set<Document> ownedDocuments;
+    @JsonIgnore
     @OneToMany(mappedBy="user")
     private Set<Permission> permissions;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Comment> comments;
 
