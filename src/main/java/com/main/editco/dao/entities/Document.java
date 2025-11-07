@@ -1,5 +1,6 @@
 package com.main.editco.dao.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,10 +25,13 @@ public class Document {
     private User owner;
     private Instant createdAt;
     private Instant updatedAt;
+    @JsonIgnore
     @OneToMany(mappedBy = "document")
     private Set<Permission> permissions;
+    @JsonIgnore
     @OneToMany(mappedBy = "document")
     private Set<Comment> comments;
+    @JsonIgnore
     @OneToMany(mappedBy = "document")
     private Set<VersionHistory>  versions;
 }
