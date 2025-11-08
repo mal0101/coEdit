@@ -5,7 +5,6 @@ import com.main.editco.dao.entities.User;
 import com.main.editco.dao.repositories.UserRepository;
 import com.main.editco.service.DocumentService;
 import com.main.editco.service.PermissionCheckService;
-import com.main.editco.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
