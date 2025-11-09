@@ -95,7 +95,7 @@ public class VersionHistoryController {
         currentStateBackup.setDocument(document);
         currentStateBackup.setContent(document.getContent());
         currentStateBackup.setEditedBy(currentUser);
-        currentStateBackup.setTimestamp(versionToRestore.getTimestamp());
+        currentStateBackup.setTimestamp(java.time.Instant.now());
         versionHistoryService.addVersionHistory(currentStateBackup);
         document.setContent(versionToRestore.getContent());
         document.setUpdatedAt(versionToRestore.getTimestamp());

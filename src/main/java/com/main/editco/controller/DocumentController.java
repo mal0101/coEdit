@@ -60,7 +60,7 @@ public class DocumentController {
     public ResponseEntity<?> updateDocument(@PathVariable Long id, @RequestBody Document document, Authentication authentication) {
         String email = authentication.getName();
         User currentUser = userRepository.findByEmail(email);
-        if (!permissionCheckService.canView(currentUser.getId(), id)) {
+        if (!permissionCheckService.canEdit(currentUser.getId(), id)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
                     .body("You don't have the permission to edit this document.");
         }
@@ -85,14 +85,14 @@ public class DocumentController {
     }
 
     @GetMapping("/owner/{ownerId}")
-    public List<Document> getDocumentsByOwnerId(@PathVariable Long ownerId, Authentication authentication) {
+    public ResponseEntity<?> getDocumentsByOwnerId(@PathVariable Long ownerId, Authentication authentication) {
         String email = authentication.getName();
         User currentUser = userRepository.findByEmail(email);
 
         if (!currentUser.getId().equals(ownerId))
         {
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body("You can's view this document");
+                    .body("You can't view this document");
         }
         List<Document> documents = documentService.getDocumentsByOwnerId(ownerId);
         return ResponseEntity.ok(documents);
