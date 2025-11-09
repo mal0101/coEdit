@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RateLimitingService {
     private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
     public boolean allowRequest(String request) {
-        Bucket bucket = buckets.get(request);
+        Bucket bucket = getBucket(request);
         return bucket.tryConsume(1);
     }
     private Bucket getBucket(String email) {
