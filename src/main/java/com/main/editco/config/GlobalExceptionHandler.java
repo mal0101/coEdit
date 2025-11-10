@@ -98,7 +98,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false)
         );
     }
-
+/**
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGenericException(
             Exception ex,
@@ -112,7 +112,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false)
         );
     }
-
+**/
     private ResponseEntity<Map<String, Object>> buildErrorResponse(
             String message,
             HttpStatus status,
