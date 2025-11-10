@@ -1,6 +1,5 @@
 package com.main.editco.config;
 
-import com.main.editco.dao.entities.User;
 import com.main.editco.service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
