@@ -111,8 +111,8 @@ coEdit/
 ## 👥 Team
 
 | Name                     | GitHub                                         |
-| ------------------------ | ---------------------------------------------- |
-| **Malak Elyassi**        | [GitHub Profile](https://github.com/mal0101)   |
+|--------------------------| ---------------------------------------------- |
+| **Malak Mekyassi**       | [GitHub Profile](https://github.com/mal0101)   |
 | **El-Hamdaoui Marouane** | [GitHub Profile](https://github.com/mar1shell) |
 
 ## 📝 License
