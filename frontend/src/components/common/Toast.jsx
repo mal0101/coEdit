@@ -1,0 +1,175 @@
+/**
+ * Toast.jsx
+ *
+ * Description: Toast notification component for displaying temporary
+ * messages. Usually rendered by the NotificationProvider.
+ *
+ * Props:
+ *   - notifications (array): Array of notification objects
+ *   - onRemove (function): Function to remove a notification
+ *
+ * Usage:
+ *   <Toast notifications={notifications} onRemove={removeNotification} />
+ */
+
+import PropTypes from "prop-types";
+import { NOTIFICATION_TYPES } from "../../utils/constants";
+
+/**
+ * Single toast item component
+ */
+function ToastItem({ notification, onRemove }) {
+  const typeStyles = {
+    [NOTIFICATION_TYPES.SUCCESS]:
+      "bg-emerald-500/90 backdrop-blur-sm text-white border border-emerald-400/30",
+    [NOTIFICATION_TYPES.ERROR]:
+      "bg-red-500/90 backdrop-blur-sm text-white border border-red-400/30",
+    [NOTIFICATION_TYPES.WARNING]:
+      "bg-amber-500/90 backdrop-blur-sm text-white border border-amber-400/30",
+    [NOTIFICATION_TYPES.INFO]:
+      "bg-cyan-500/90 backdrop-blur-sm text-white border border-cyan-400/30",
+  };
+
+  const typeIcons = {
+    [NOTIFICATION_TYPES.SUCCESS]: (
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M5 13l4 4L19 7"
+        />
+      </svg>
+    ),
+    [NOTIFICATION_TYPES.ERROR]: (
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    ),
+    [NOTIFICATION_TYPES.WARNING]: (
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        />
+      </svg>
+    ),
+    [NOTIFICATION_TYPES.INFO]: (
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+  };
+
+  return (
+    <div
+      className={`
+        flex items-center gap-3 px-4 py-3 rounded-xl shadow-xl
+        animate-slideIn min-w-[300px] max-w-md
+        ${typeStyles[notification.type] || typeStyles[NOTIFICATION_TYPES.INFO]}
+      `
+        .trim()
+        .replace(/\s+/g, " ")}
+      role="alert"
+    >
+      <span className="shrink-0">
+        {typeIcons[notification.type] || typeIcons[NOTIFICATION_TYPES.INFO]}
+      </span>
+      <p className="flex-1 text-sm font-medium">{notification.message}</p>
+      <button
+        onClick={() => onRemove(notification.id)}
+        className="shrink-0 p-1 rounded hover:bg-white/20 transition-colors"
+        aria-label="Dismiss notification"
+      >
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+  );
+}
+
+ToastItem.propTypes = {
+  notification: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+  }).isRequired,
+  onRemove: PropTypes.func.isRequired,
+};
+
+/**
+ * Toast container component
+ */
+function Toast({ notifications, onRemove }) {
+  if (!notifications || notifications.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+      {notifications.map((notification) => (
+        <ToastItem
+          key={notification.id}
+          notification={notification}
+          onRemove={onRemove}
+        />
+      ))}
+    </div>
+  );
+}
+
+Toast.propTypes = {
+  notifications: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      message: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onRemove: PropTypes.func.isRequired,
+};
+
+export default Toast;

@@ -1,8 +1,11 @@
 package com.main.editco.service;
 
 import com.main.editco.dao.entities.Document;
+import com.main.editco.dao.repositories.CommentRepository;
 import com.main.editco.dao.repositories.DocumentRepository;
-import org.springframework.transaction.annotation.Transactional; // ✅ CORRECT
+import com.main.editco.dao.repositories.PermissionRepository;
+import com.main.editco.dao.repositories.VersionHistoryRepository;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,9 @@ import java.util.Optional;
 @Service
 public class DocumentService {
     @Autowired DocumentRepository documentRepository;
+    @Autowired CommentRepository commentRepository;
+    @Autowired PermissionRepository permissionRepository;
+    @Autowired VersionHistoryRepository versionHistoryRepository;
 
     @Transactional(readOnly=true)
     public List<Document> getAllDocuments(){
@@ -48,6 +54,20 @@ public class DocumentService {
     @Transactional
     public boolean deleteDocument(Long id) {
         if (documentRepository.existsById(id)){
+            // Delete all related entities first to avoid foreign key constraint violations
+            log.debug("Deleting comments for document {}", id);
+            commentRepository.findByDocumentId(id).forEach(comment -> 
+                commentRepository.deleteById(comment.getId()));
+            
+            log.debug("Deleting permissions for document {}", id);
+            permissionRepository.findByDocumentId(id).forEach(permission -> 
+                permissionRepository.deleteById(permission.getId()));
+            
+            log.debug("Deleting version history for document {}", id);
+            versionHistoryRepository.findByDocumentIdOrderByTimestampDesc(id).forEach(version -> 
+                versionHistoryRepository.deleteById(version.getId()));
+            
+            log.debug("Deleting document {}", id);
             documentRepository.deleteById(id);
             return true;
         }
