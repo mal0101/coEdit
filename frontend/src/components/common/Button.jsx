@@ -1,31 +1,6 @@
-/**
- * Button.jsx
- *
- * Description: Reusable button component with multiple variants,
- * sizes, and states. Supports loading state and icons.
- *
- * Props:
- *   - variant (string): 'primary' | 'secondary' | 'danger' | 'ghost'
- *   - size (string): 'sm' | 'md' | 'lg'
- *   - loading (boolean): Shows loading spinner
- *   - disabled (boolean): Disables the button
- *   - icon (ReactNode): Optional icon element
- *   - iconPosition (string): 'left' | 'right'
- *   - fullWidth (boolean): Makes button full width
- *   - children (ReactNode): Button content
- *   - ...props: Additional HTML button attributes
- *
- * Usage:
- *   <Button variant="primary" onClick={handleClick}>Submit</Button>
- *   <Button variant="danger" loading>Deleting...</Button>
- */
-
 import PropTypes from "prop-types";
 import Spinner from "./Spinner";
 
-/**
- * Button component
- */
 function Button({
   variant = "primary",
   size = "md",
@@ -39,14 +14,12 @@ function Button({
   type = "button",
   ...props
 }) {
-  // Base classes
   const baseClasses = `
-    inline-flex items-center justify-center font-medium rounded-xl
+    inline-flex items-center justify-center font-medium rounded-xl cursor-pointer
     transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900
     disabled:opacity-50 disabled:cursor-not-allowed
   `;
 
-  // Variant classes - Dark elegant theme
   const variantClasses = {
     primary:
       "bg-cyan-600 text-white hover:bg-cyan-500 focus:ring-cyan-500 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40",
@@ -60,7 +33,6 @@ function Button({
       "bg-emerald-600 text-white hover:bg-emerald-500 focus:ring-emerald-500 shadow-lg shadow-emerald-500/20",
   };
 
-  // Size classes
   const sizeClasses = {
     sm: "px-3 py-1.5 text-sm",
     md: "px-4 py-2 text-sm",
