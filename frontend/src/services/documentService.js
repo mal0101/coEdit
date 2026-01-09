@@ -1,14 +1,3 @@
-/**
- * documentService.js
- *
- * Description: Document service for handling CRUD operations on documents.
- * Provides methods for creating, reading, updating, and deleting documents.
- *
- * Usage:
- *   import documentService from '../services/documentService';
- *   const documents = await documentService.getAllDocuments();
- */
-
 import api from "./api";
 import { API_ENDPOINTS } from "../utils/constants";
 

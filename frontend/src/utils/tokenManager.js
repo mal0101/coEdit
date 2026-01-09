@@ -1,13 +1,3 @@
-/**
- * tokenManager.js
- *
- * Description: JWT token management utilities for storing, retrieving,
- * and validating authentication tokens.
- *
- * Usage:
- *   import { getToken, setToken, removeToken } from '../utils/tokenManager';
- */
-
 import { STORAGE_KEYS } from "./constants";
 
 /**

@@ -1,14 +1,4 @@
 /**
- * validators.js
- *
- * Description: Form validation helper functions for user input validation.
- * Provides email, password, and other field validation utilities.
- *
- * Usage:
- *   import { validateEmail, validatePassword } from '../utils/validators';
- */
-
-/**
  * Validates an email address format
  * @param {string} email - The email address to validate
  * @returns {{ isValid: boolean, message: string }} Validation result

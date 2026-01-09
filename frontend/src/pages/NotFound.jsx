@@ -1,13 +1,3 @@
-/**
- * NotFound.jsx
- *
- * Description: 404 Not Found page with navigation options
- * to return to dashboard or home.
- *
- * Usage:
- *   <Route path="*" element={<NotFound />} />
- */
-
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Button from "../components/common/Button";
@@ -21,7 +11,6 @@ function NotFound() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4">
       <div className="max-w-md w-full text-center">
-        {/* 404 Illustration */}
         <div className="mb-8">
           <div className="relative">
             <div className="text-9xl font-bold text-gray-200">404</div>
@@ -43,7 +32,6 @@ function NotFound() {
           </div>
         </div>
 
-        {/* Message */}
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
           Page not found
         </h1>
@@ -52,7 +40,6 @@ function NotFound() {
           might have been moved or deleted.
         </p>
 
-        {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to={isAuthenticated ? "/dashboard" : "/"}>
             <Button>
@@ -92,7 +79,6 @@ function NotFound() {
           </Link>
         </div>
 
-        {/* Help text */}
         <p className="text-sm text-gray-500 mt-8">
           Need help?{" "}
           <a

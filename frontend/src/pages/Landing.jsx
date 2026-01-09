@@ -1,20 +1,7 @@
-/**
- * Landing.jsx
- *
- * Description: Public landing page with hero section, features,
- * and call-to-action for the coEdit application.
- *
- * Usage:
- *   <Route path="/" element={<Landing />} />
- */
-
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Button from "../components/common/Button";
 
-/**
- * Feature card component for landing page
- */
 function FeatureCard({ icon, title, description }) {
   return (
     <div className="bg-zinc-900/50 backdrop-blur-sm rounded-2xl p-6 border border-zinc-800/50 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/5 transition-all duration-300 group">
@@ -27,9 +14,6 @@ function FeatureCard({ icon, title, description }) {
   );
 }
 
-/**
- * Landing page component
- */
 function Landing() {
   const { isAuthenticated } = useAuth();
 

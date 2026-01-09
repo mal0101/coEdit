@@ -1,13 +1,3 @@
-/**
- * Register.jsx
- *
- * Description: Registration page with name, email, password fields,
- * password strength indicator, and validation.
- *
- * Usage:
- *   <Route path="/register" element={<Register />} />
- */
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -16,9 +6,6 @@ import { validateRegisterForm, validatePassword } from "../utils/validators";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 
-/**
- * Password strength indicator component
- */
 function PasswordStrength({ password }) {
   const { strength } = validatePassword(password);
 
@@ -62,9 +49,6 @@ function PasswordStrength({ password }) {
   );
 }
 
-/**
- * Register page component
- */
 function Register() {
   const [formData, setFormData] = useState({
     name: "",

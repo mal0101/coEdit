@@ -1,21 +1,7 @@
-/**
- * websocketService.js
- *
- * Description: WebSocket service for real-time collaboration using STOMP over SockJS.
- * Handles connection management, subscriptions, and message sending.
- *
- * Usage:
- *   import websocketService from '../services/websocketService';
- *   websocketService.connect(token, onConnect, onError);
- */
-
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
 import { WS_URL, WS_TOPICS, WS_DESTINATIONS } from "../utils/constants";
 
-/**
- * WebSocket service singleton
- */
 class WebSocketService {
   constructor() {
     this.client = null;

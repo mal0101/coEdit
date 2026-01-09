@@ -1,13 +1,3 @@
-/**
- * SharedDocs.jsx
- *
- * Description: Page showing documents shared with the current user
- * by other users, with access type indicators.
- *
- * Usage:
- *   <Route path="/shared" element={<SharedDocs />} />
- */
-
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";

@@ -1,14 +1,3 @@
-/**
- * api.js
- *
- * Description: Base Axios instance with request and response interceptors
- * for API communication. Handles authentication headers and error responses.
- *
- * Usage:
- *   import api from './api';
- *   const response = await api.get('/endpoint');
- */
-
 import axios from "axios";
 import { API_BASE_URL, ERROR_MESSAGES } from "../utils/constants";
 import { getToken, clearAuthData } from "../utils/tokenManager";

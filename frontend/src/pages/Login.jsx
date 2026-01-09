@@ -1,13 +1,3 @@
-/**
- * Login.jsx
- *
- * Description: Login page with email/password form, validation,
- * error handling, and redirect after successful login.
- *
- * Usage:
- *   <Route path="/login" element={<Login />} />
- */
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";

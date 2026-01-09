@@ -1,20 +1,6 @@
-/**
- * versionService.js
- *
- * Description: Version history service for managing document versions.
- * Handles creating snapshots, viewing history, and restoring versions.
- *
- * Usage:
- *   import versionService from '../services/versionService';
- *   const history = await versionService.getVersionHistory(docId);
- */
-
 import api from "./api";
 import { API_ENDPOINTS } from "../utils/constants";
 
-/**
- * Version history service object
- */
 const versionService = {
   /**
    * Gets version history for a document

@@ -1,19 +1,7 @@
-/**
- * constants.js
- *
- * Description: Application-wide constants including API URLs, WebSocket URLs,
- * access types, and other configuration values.
- *
- * Usage:
- *   import { API_BASE_URL, ACCESS_TYPES } from '../utils/constants';
- */
-
-// API Configuration
 export const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:8005";
 export const WS_URL = import.meta.env.VITE_WS_URL || "http://localhost:8005/ws";
 
-// API Endpoints
 export const API_ENDPOINTS = {
   // Auth
   AUTH: {

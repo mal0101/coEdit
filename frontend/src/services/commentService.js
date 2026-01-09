@@ -1,14 +1,3 @@
-/**
- * commentService.js
- *
- * Description: Comment service for managing document comments.
- * Handles creating, updating, deleting, and fetching comments.
- *
- * Usage:
- *   import commentService from '../services/commentService';
- *   const comments = await commentService.getDocumentComments(docId);
- */
-
 import api from "./api";
 import { API_ENDPOINTS } from "../utils/constants";
 

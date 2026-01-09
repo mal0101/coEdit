@@ -1,13 +1,3 @@
-/**
- * formatters.js
- *
- * Description: Utility functions for formatting dates, text, numbers,
- * and other data for display in the UI.
- *
- * Usage:
- *   import { formatDate, formatRelativeTime } from '../utils/formatters';
- */
-
 import { DATE_FORMAT_OPTIONS } from "./constants";
 
 /**

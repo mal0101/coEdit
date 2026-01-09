@@ -1,18 +1,7 @@
-/**
- * AppRoutes.jsx
- *
- * Description: Main application routing configuration using React Router.
- * Handles public and protected routes with lazy loading.
- *
- * Usage:
- *   <AppRoutes />
- */
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { ROUTES } from "../utils/constants";
 
-// Pages
 import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -22,7 +11,6 @@ import Profile from "../pages/Profile";
 import SharedDocs from "../pages/SharedDocs";
 import NotFound from "../pages/NotFound";
 
-// Components
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 import Navbar from "../components/layout/Navbar";
 
@@ -65,7 +53,6 @@ function PublicOnlyRoute({ children }) {
 function AppRoutes() {
   return (
     <Routes>
-      {/* Public routes */}
       <Route
         path={ROUTES.HOME}
         element={
@@ -90,8 +77,6 @@ function AppRoutes() {
           </PublicOnlyRoute>
         }
       />
-
-      {/* Protected routes with navbar */}
       <Route
         path={ROUTES.DASHBOARD}
         element={
@@ -122,8 +107,6 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
-
-      {/* Document editor - full screen without navbar */}
       <Route
         path={`${ROUTES.DOCUMENT}/:id`}
         element={
@@ -132,8 +115,6 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
-
-      {/* Catch all - 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

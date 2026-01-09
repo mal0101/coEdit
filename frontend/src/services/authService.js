@@ -1,21 +1,7 @@
-/**
- * authService.js
- *
- * Description: Authentication service for handling login, registration,
- * logout, and user verification operations.
- *
- * Usage:
- *   import authService from '../services/authService';
- *   const response = await authService.login(email, password);
- */
-
 import api from "./api";
 import { API_ENDPOINTS } from "../utils/constants";
 import { setToken, setUser, clearAuthData } from "../utils/tokenManager";
 
-/**
- * Authentication service object containing all auth-related API calls
- */
 const authService = {
   /**
    * Registers a new user account

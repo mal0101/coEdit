@@ -1,20 +1,6 @@
-/**
- * permissionService.js
- *
- * Description: Permission service for managing document access permissions.
- * Handles granting, revoking, and querying permissions.
- *
- * Usage:
- *   import permissionService from '../services/permissionService';
- *   await permissionService.grantPermission(docId, userId, 'EDITOR');
- */
-
 import api from "./api";
 import { API_ENDPOINTS } from "../utils/constants";
 
-/**
- * Permission service object containing all permission-related API calls
- */
 const permissionService = {
   /**
    * Grants permission to a user for a document

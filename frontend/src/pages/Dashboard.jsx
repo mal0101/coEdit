@@ -1,13 +1,3 @@
-/**
- * Dashboard.jsx
- *
- * Description: Main dashboard page showing user's documents in grid/list view,
- * with create new document functionality and document management.
- *
- * Usage:
- *   <Route path="/dashboard" element={<Dashboard />} />
- */
-
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNotification } from "../context/NotificationContext";

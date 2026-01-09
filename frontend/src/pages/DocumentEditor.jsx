@@ -1,13 +1,3 @@
-/**
- * DocumentEditor.jsx
- *
- * Description: Main document editing page with real-time collaboration,
- * auto-save, share functionality, version history, and comments panel.
- *
- * Usage:
- *   <Route path="/document/:id" element={<DocumentEditor />} />
- */
-
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";

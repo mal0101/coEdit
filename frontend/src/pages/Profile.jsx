@@ -1,13 +1,3 @@
-/**
- * Profile.jsx
- *
- * Description: User profile page with account settings,
- * profile information editing, and account management.
- *
- * Usage:
- *   <Route path="/profile" element={<Profile />} />
- */
-
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNotification } from "../context/NotificationContext";
@@ -16,9 +6,6 @@ import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import Card from "../components/common/Card";
 
-/**
- * Profile page component
- */
 function Profile() {
   const { user, refreshUser } = useAuth();
   const { showSuccess, showError } = useNotification();
