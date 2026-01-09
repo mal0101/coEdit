@@ -1,24 +1,3 @@
-/**
- * Card.jsx
- *
- * Description: Reusable card component for displaying content
- * in a contained box with optional header and footer.
- *
- * Props:
- *   - title (string): Card title
- *   - subtitle (string): Card subtitle
- *   - children (ReactNode): Card content
- *   - footer (ReactNode): Card footer content
- *   - hoverable (boolean): Add hover effect
- *   - clickable (boolean): Make card clickable
- *   - onClick (function): Click handler
- *
- * Usage:
- *   <Card title="My Document" hoverable>
- *     <p>Card content here</p>
- *   </Card>
- */
-
 import PropTypes from "prop-types";
 
 /**

@@ -1,23 +1,6 @@
-/**
- * Toast.jsx
- *
- * Description: Toast notification component for displaying temporary
- * messages. Usually rendered by the NotificationProvider.
- *
- * Props:
- *   - notifications (array): Array of notification objects
- *   - onRemove (function): Function to remove a notification
- *
- * Usage:
- *   <Toast notifications={notifications} onRemove={removeNotification} />
- */
-
 import PropTypes from "prop-types";
 import { NOTIFICATION_TYPES } from "../../utils/constants";
 
-/**
- * Single toast item component
- */
 function ToastItem({ notification, onRemove }) {
   const typeStyles = {
     [NOTIFICATION_TYPES.SUCCESS]:
@@ -140,9 +123,6 @@ ToastItem.propTypes = {
   onRemove: PropTypes.func.isRequired,
 };
 
-/**
- * Toast container component
- */
 function Toast({ notifications, onRemove }) {
   if (!notifications || notifications.length === 0) {
     return null;

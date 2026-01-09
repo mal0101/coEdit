@@ -1,17 +1,3 @@
-/**
- * NotificationContext.jsx
- *
- * Description: Global notification/toast context provider for displaying
- * success, error, warning, and info messages throughout the application.
- *
- * Props:
- *   - children (ReactNode): Child components to wrap
- *
- * Usage:
- *   <NotificationProvider><App /></NotificationProvider>
- *   const { showNotification, showSuccess, showError } = useNotification();
- */
-
 import { createContext, useContext, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { NOTIFICATION_TYPES, NOTIFICATION_DURATION } from "../utils/constants";

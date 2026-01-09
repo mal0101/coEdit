@@ -1,17 +1,3 @@
-/**
- * DocumentContext.jsx
- *
- * Description: Context provider for managing current document state,
- * including editing, collaboration, and real-time updates.
- *
- * Props:
- *   - children (ReactNode): Child components to wrap
- *
- * Usage:
- *   <DocumentProvider><DocumentEditor /></DocumentProvider>
- *   const { document, updateContent, saveDocument } = useDocument();
- */
-
 import {
   createContext,
   useContext,
@@ -24,9 +10,6 @@ import documentService from "../services/documentService";
 import versionService from "../services/versionService";
 import { DEBOUNCE_DELAYS } from "../utils/constants";
 
-/**
- * Document context
- */
 const DocumentContext = createContext(null);
 
 /**

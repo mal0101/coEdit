@@ -1,24 +1,3 @@
-/**
- * Dropdown.jsx
- *
- * Description: Versatile dropdown component supporting both:
- *   1. Select dropdown (form element)
- *   2. Menu dropdown (action menu with trigger)
- *
- * Usage (Select mode):
- *   <Dropdown
- *     options={[{ value: 'EDITOR', label: 'Can Edit' }]}
- *     value={accessType}
- *     onChange={setAccessType}
- *   />
- *
- * Usage (Menu mode):
- *   <Dropdown
- *     trigger={<button>Click me</button>}
- *     items={[{ label: 'Delete', onClick: handleDelete, danger: true }]}
- *   />
- */
-
 import { forwardRef, useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 

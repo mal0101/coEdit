@@ -1,30 +1,7 @@
-/**
- * Modal.jsx
- *
- * Description: Reusable modal/dialog component with backdrop,
- * close button, and customizable content.
- *
- * Props:
- *   - isOpen (boolean): Controls modal visibility
- *   - onClose (function): Called when modal should close
- *   - title (string): Modal title
- *   - children (ReactNode): Modal content
- *   - size (string): 'sm' | 'md' | 'lg' | 'xl'
- *   - showCloseButton (boolean): Show X button
- *
- * Usage:
- *   <Modal isOpen={isOpen} onClose={handleClose} title="Confirm">
- *     <p>Are you sure?</p>
- *   </Modal>
- */
-
 import { useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 
-/**
- * Modal component
- */
 function Modal({
   isOpen,
   onClose,

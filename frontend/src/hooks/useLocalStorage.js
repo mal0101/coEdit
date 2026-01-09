@@ -1,13 +1,3 @@
-/**
- * useLocalStorage.js
- *
- * Description: Custom hook for persisting state in localStorage with
- * automatic serialization and synchronization across tabs.
- *
- * Usage:
- *   const [value, setValue] = useLocalStorage('key', 'defaultValue');
- */
-
 import { useState, useEffect, useCallback } from "react";
 
 /**

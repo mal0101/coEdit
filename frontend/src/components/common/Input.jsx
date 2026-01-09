@@ -1,27 +1,6 @@
-/**
- * Input.jsx
- *
- * Description: Reusable input component with label, error state,
- * and icon support.
- *
- * Props:
- *   - label (string): Input label text
- *   - error (string): Error message to display
- *   - icon (ReactNode): Optional icon element
- *   - iconPosition (string): 'left' | 'right'
- *   - fullWidth (boolean): Makes input full width
- *   - ...props: Additional HTML input attributes
- *
- * Usage:
- *   <Input label="Email" type="email" error={errors.email} />
- */
-
 import { forwardRef } from "react";
 import PropTypes from "prop-types";
 
-/**
- * Input component with forwarded ref
- */
 const Input = forwardRef(function Input(
   {
     label,

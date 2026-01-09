@@ -1,23 +1,5 @@
-/**
- * Spinner.jsx
- *
- * Description: Loading spinner component with customizable size and color.
- *
- * Props:
- *   - size (string): 'sm' | 'md' | 'lg'
- *   - color (string): Tailwind color class
- *   - className (string): Additional CSS classes
- *
- * Usage:
- *   <Spinner />
- *   <Spinner size="lg" color="text-white" />
- */
-
 import PropTypes from "prop-types";
 
-/**
- * Spinner component
- */
 function Spinner({ size = "md", color = "text-cyan-500", className = "" }) {
   const sizeClasses = {
     sm: "w-4 h-4",

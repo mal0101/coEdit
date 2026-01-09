@@ -1,20 +1,3 @@
-/**
- * AuthContext.jsx
- *
- * Description: Global authentication context provider that manages user
- * authentication state, login/logout operations, and user data.
- *
- * Props:
- *   - children (ReactNode): Child components to wrap
- *
- * Usage:
- *   // Wrap app with provider
- *   <AuthProvider><App /></AuthProvider>
- *
- *   // Use in components
- *   const { user, login, logout, isAuthenticated } = useAuth();
- */
-
 import {
   createContext,
   useContext,
@@ -32,9 +15,6 @@ import {
   isAuthenticated as checkAuth,
 } from "../utils/tokenManager";
 
-/**
- * Authentication context
- */
 const AuthContext = createContext(null);
 
 /**

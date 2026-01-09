@@ -1,22 +1,9 @@
-/**
- * Navbar.jsx
- *
- * Description: Main navigation bar component with logo, navigation links,
- * and user menu. Responsive with mobile hamburger menu.
- *
- * Usage:
- *   <Navbar />
- */
-
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { getInitials } from "../../utils/formatters";
 import Button from "../common/Button";
 
-/**
- * Navbar component
- */
 function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
@@ -24,9 +11,6 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
-  /**
-   * Handles user logout
-   */
   const handleLogout = () => {
     logout();
     navigate("/login");
