@@ -16,15 +16,10 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.setAllowedOriginPatterns(Arrays.asList(
-                "http://localhost:3000",    // React default (Create React App)
-                "http://localhost:3001",    // Alternative React port
-                "http://localhost:4200",    // Angular default
-                "http://localhost:5173",    // Vite default (modern React/Vue)
-                "http://localhost:8080",    // Another common port
-                "http://localhost:8081",    // Yet another common port
-                "http://127.0.0.1:3000",    // Same as localhost but IP
-                "http://127.0.0.1:5173"     // Vite with IP
-                // add actual domain later
+                "http://localhost:5173",    
+                "http://localhost:8080",    
+                "http://localhost:8081",    
+                "http://127.0.0.1:5173"    
         ));
         config.addAllowedHeader("*");
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));

@@ -35,11 +35,11 @@ public class EnvConfig {
                         (entry.getKey().contains("SECRET") ? "***HIDDEN***" : entry.getValue()));
             });
 
-            System.out.println("✅ .env file loaded successfully");
+            System.out.println(".env file loaded successfully");
             System.out.println("========================");
 
         } catch (Exception e) {
-            System.err.println("❌ ERROR loading .env file:");
+            System.err.println("ERROR loading .env file:");
             e.printStackTrace();
             throw new RuntimeException("Failed to load .env file", e);
         }
